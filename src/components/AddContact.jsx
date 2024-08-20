@@ -1,11 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function AddContact({ onAddContact }) { 
+export default function AddContact({ onAddContact, editForm, name, setName, email, setEmail, showForm, setShowForm  }) { 
   // 'onAddContact' prop, which is a function to add a contact
 
-  const [name, setName] = useState(''); // Initialize 'name' state as an empty string
-  const [email, setEmail] = useState(''); // Initialize 'email' state as an empty string
-  const [showForm, setShowForm] = useState(false); // Initialize 'showForm' state as false to control form visibility
 
   const handleSubmit = (e) => { 
     e.preventDefault(); // Prevent the default form submission behavior
@@ -13,20 +10,22 @@ export default function AddContact({ onAddContact }) {
     setName(''); // Reset the 'name' state to an empty string after submission
     setEmail(''); // Reset the 'email' state to an empty string after submission
     setShowForm(false); // Hide the form after the contact is added
+    
   };
 
   return (
     <div>
       {/* Button to toggle the visibility of the form */}
-      <button className="add-contact" onClick={() => setShowForm(!showForm)}>
-        Add Contact
+      <button className="add-contact" onClick={() => setShowForm(!showForm)
+      }>
+        {editForm === null  ?  'Add Form' : 'Edit Contact'}
       </button>
       {/* Conditional rendering: If 'showForm' is true, display the form */}
       {showForm && (
         <div className="contact-form">
-          <h2>Add Contact</h2>
+          <h2>{editForm !== null ? 'Edit Form' : 'Add Contact'}</h2>
           {/* Form to capture the contact's name and email */}
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} >
             <label htmlFor="name">Name</label>
             <input
               type="text"
@@ -43,7 +42,7 @@ export default function AddContact({ onAddContact }) {
               onChange={(e) => setEmail(e.target.value)} // Update the 'email' state when the input changes
               required // Make this input required
             />
-            <button type="submit">Add</button> 
+            <button type="submit">{editForm !== null ? 'Update' : 's'}</button> 
             {/* Submit button to add the contact */}
           </form>
         </div>
