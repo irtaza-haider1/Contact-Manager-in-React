@@ -137,3 +137,10 @@
   cursor: pointer;
   font-size: 20px;
 }
+.contact-item{
+  display: flex;
+}
+.editBtn{
+  border: none;
+  background-color: white;
+}

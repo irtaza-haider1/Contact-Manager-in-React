@@ -23,7 +23,7 @@ export default function ContactCard({ contact, onDelete,onEdit }) {
       </button>
             {/* Button to delete the contact, triggers the 'onDelete' function */}
 
-      <button className='"editBtn' onClick={onEdit}>✏️</button>
+      <button className='editBtn' onClick={onEdit}>✏️</button>
     </div>
   );
 }
